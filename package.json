@@ -1,7 +1,7 @@
 {
-  "name": "sqlite3",
+  "name": "@dariononis/sqlite3",
   "description": "Asynchronous, non-blocking SQLite3 bindings",
-  "version": "5.1.6",
+  "version": "15.1.6",
   "homepage": "https://github.com/TryGhost/node-sqlite3",
   "author": {
     "name": "Mapbox",
@@ -9,12 +9,11 @@
   },
   "binary": {
     "module_name": "node_sqlite3",
-    "module_path": "./lib/binding/napi-v{napi_build_version}-{platform}-{libc}-{arch}",
-    "host": "https://github.com/TryGhost/node-sqlite3/releases/download/",
+    "module_path": "./lib/binding/napi-v{napi_build_version}-{platform}-{arch}",
+    "host": "https://github.com/dariononis/node-sqlite3/releases/download/",
     "remote_path": "v{version}",
-    "package_name": "napi-v{napi_build_version}-{platform}-{libc}-{arch}.tar.gz",
+    "package_name": "napi-v{napi_build_version}-{platform}-{arch}-{libc}.tar.gz",
     "napi_versions": [
-      3,
       6
     ]
   },
@@ -45,7 +44,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/TryGhost/node-sqlite3.git"
+    "url": "git://github.com/dariononis/node-sqlite3.git"
   },
   "dependencies": {
     "@mapbox/node-pre-gyp": "^1.0.0",
@@ -74,7 +73,14 @@
     "install": "node-pre-gyp install --fallback-to-build",
     "pretest": "node test/support/createdb.js",
     "test": "mocha -R spec --timeout 480000",
-    "pack": "node-pre-gyp package"
+    "pack": "node-pre-gyp package",
+    "build-binaries": "npm run build-linux && npm run build-linux-arm && npm run build-linux-alpine && npm run extract-tar",
+    "build-linux": "docker buildx build -f build.dockerfile --platform linux/amd64,linux/arm64 --output type=tar,dest=build/out.tar . --progress plain",
+    "build-linux-arm": "docker buildx build -f build-arm.dockerfile --platform linux/arm/v7 --output type=tar,dest=build/out-armv7.tar . --progress plain",
+    "build-linux-alpine": "docker buildx build -f build-alpine.dockerfile --platform linux/amd64,linux/arm64,linux/arm/v7 --output type=tar,dest=build/out-alpine.tar .",
+    "extract-tar": "node tools/extract-tar.js",
+    "npm-publish-dry-run": "npm publish --dry-run",
+    "npm-publish": "npm publish"
   },
   "license": "BSD-3-Clause",
   "keywords": [
