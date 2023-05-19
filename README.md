@@ -30,7 +30,7 @@ https://github.com/TryGhost/node-sqlite3
 
 ### Prepare Prebuilt
 
-#### glibc & musl
+#### Glibc & Musl
 
 ```bash
 npm run build-binaries
@@ -38,11 +38,11 @@ npm run build-binaries
 
 All files in ./build after built.
 
-glibc
+#### Glibc
 - armv7 - npm run build-linux-arm (Support glibc >=2.18 only)
 - amd64/arm64 - npm run build-linux
 
-musl (alpine)
+#### Musl (Alpine)
 - armv7/arm64/amd64 - npm run build-linux-alpine
 
 #### Windows / MacOS
