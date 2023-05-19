@@ -12,7 +12,7 @@ async function extractAndDelete(filename, stripCount = 5) {
     await tar.extract({
         file: filename,
         cwd: "./build",
-        strip: stripCount,           //    linux_arm64\app\build\stage\v15.0.6\         Stripe 5 folders!!
+        strip: stripCount,           //    linux_arm64\app\build\stage\v6.0.1\         Stripe 5 folders!!
         filter: (path) => {
             if (path.includes("app/build/stage/") && path.endsWith(".tar.gz")) {
                 console.log(path);

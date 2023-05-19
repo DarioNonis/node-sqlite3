@@ -16,11 +16,11 @@ PS: No electron supports
 ## How to use
 
 ```
-npm install @dariononis/sqlite3
+npm install @dnonis/sqlite3
 npm remove sqlite3
 ```
 
-Replace require("@dariononis/sqlite") in your source code
+Replace require("@dnonis/sqlite") in your source code
 
 ## Documentation
 
@@ -28,7 +28,7 @@ https://github.com/TryGhost/node-sqlite3
 
 ## (For Maintainers/Developers Only) 
 
-###Prepare Prebuilt
+### Prepare Prebuilt
 
 #### glibc & musl
 
