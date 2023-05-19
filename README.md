@@ -1,15 +1,10 @@
-# node-sqlite3 with CentOS 7 support
+# Fork of node-sqlite3
 
-Mainly used for my another project - [Tavern](https://github.com/DarioNonis/Tavern)
+Mainly used for my another project - Tavern
 
-## What is the different between TryGhost/node-sqlite3?
-
-The official one is dropped the support for CentOS 7, but my fork supports CentOS 7. 
-
-If you want to build a Node.js application which can be installed on many Linux distributions like Tavern, this library should be useful.
-
-If your application will be just designed for new Linux distributions, you probably do not need it, just use the official one.
-
+- SQLite update to 3.36.0
+- ARM pre-built
+- Fix npm security problem
 
 PS: No electron supports
 
@@ -22,33 +17,17 @@ npm remove sqlite3
 
 Replace require("@dnonis/sqlite") in your source code
 
-## Documentation
 
-https://github.com/TryGhost/node-sqlite3
 
-## (For Maintainers/Developers Only) 
 
-### Prepare Prebuilt
+## Prepare Prebuilt
 
-#### Glibc & Musl
-
-```bash
-npm run build-binaries
-```
-
-All files in ./build after built.
-
-#### Glibc
+glibc
 - armv7 - npm run build-linux-arm (Support glibc >=2.18 only)
 - amd64/arm64 - npm run build-linux
 
-#### Musl (Alpine)
+musl (alpine)
 - armv7/arm64/amd64 - npm run build-linux-alpine
 
-#### Windows / MacOS
+Windows / MacOS
 - Get from Github Action
-
-#### Mac ARM64 (M1/M2)
-- Get from TryGhost/node-sqlite3
-- Rename to `napi-v6-darwin-arm64-unknown.tar.gz`
-- Use 7zip to rename the folder inside to `napi-v6-darwin-arm64`
